@@ -45,7 +45,7 @@ const Benefits = ({ theme }) => {
             Sell
           </h2>
           <p className="dark:text-zinc-300 text-zinc-400 text-xs lg:text-sm text-center mt-10">
-            Inquire Notes is more than a document reader—it’s your personal
+            Inquire Notes is more than a document reader—it's your personal
             assistant for smarter learning and efficient organization. Discover
             how:
           </p>
@@ -62,14 +62,14 @@ const Benefits = ({ theme }) => {
               >
                 <CardBody
                   className={
-                    "bg-zinc-50 dark:bg-zinc-900 border border-zinc-400 dark:border-zinc-800 flex flex-col items-center justify-between h-80 lg:w-64 md:w-52 w-64 rounded-xl p-10 cursor-default"
+                    "bg-zinc-50/50 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 flex flex-col items-center justify-between h-80 lg:w-64 md:w-52 w-64 rounded-xl p-10 cursor-default"
                   }
                 >
                   <CardItem
                     translateZ={"50"}
                     className={"text-primaryLight dark:text-primaryDark"}
                   >
-                    <div className="bg-zinc-200 dark:bg-zinc-800 rounded-full p-5 drop-shadow-xl">
+                    <div className="bg-zinc-100 dark:bg-zinc-800 rounded-full p-5 drop-shadow-xl">
                       {benefit.icon}
                     </div>
                   </CardItem>

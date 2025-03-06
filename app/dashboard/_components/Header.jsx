@@ -8,9 +8,9 @@ import { Switch } from "@/components/ui/switch";
 const Header = () => {
   const { theme, setTheme } = useTheme();
   return (
-    <div className="flex justify-end p-5 shadow-md bg-bgLight dark:bg-bgDark dark:shadow-zinc-200/10 gap-5">
-      <UserButton />
-      <div className="flex items-center justify-between px-2">
+    <div className="flex justify-end p-5 px-10 shadow-md bg-bgLight dark:bg-bgDark dark:shadow-zinc-200/10 gap-5 ">
+      
+      <div className="flex items-center gap-2 justify-between px-2">
         <SunIcon width={16} />
         <Switch
           checked={theme === "dark"}
@@ -18,6 +18,7 @@ const Header = () => {
         />
         <MoonIcon width={16} />
       </div>
+      <UserButton />
     </div>
   );
 };

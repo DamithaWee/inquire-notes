@@ -17,10 +17,12 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  
   return (
     <ThemeProvider>
       <ClerkProvider>
         <html lang="en" className="scroll-smooth">
+          
           <body
             className={`${inter.className} antialiased bg-bgLight dark:bg-bgDark`}
           >
@@ -29,6 +31,7 @@ export default function RootLayout({ children }) {
             </Provider>
             <Toaster />
           </body>
+          
         </html>
       </ClerkProvider>
     </ThemeProvider>

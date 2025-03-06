@@ -1,8 +1,12 @@
+import OpenAI from "openai";
+
 const {
   GoogleGenerativeAI,
   HarmCategory,
   HarmBlockThreshold,
 } = require("@google/generative-ai");
+
+// GOOGLE GENERATIVE AI
 
 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
@@ -26,5 +30,11 @@ export const chatSession = model.startChat({
     ],
 });
 
-//   const result = await chatSession.sendMessage("INSERT_INPUT_HERE");
-//   console.log(result.response.text());
+//OPEN ROUTER
+export const openRouterModel = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
+  dangerouslyAllowBrowser: true,
+});
+
+

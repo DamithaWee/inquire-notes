@@ -34,7 +34,9 @@ export const userUpgradePlan=mutation({
         
     },
     handler:async (ctx, args) => {
-        c
+        const result = await ctx.db.query('users')
+        .filter((q)=> q.eq(q.field('email'), args.userEmail))
+        .collect()
 
         if(result){
             await ctx.db.patch(result[0]._id, {upgrade:true});

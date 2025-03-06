@@ -6,6 +6,7 @@ const PricingCard = ({
   price,
   type,
   subscription,
+  title,
   buttonText,
   active,
 }) => {
@@ -13,10 +14,10 @@ const PricingCard = ({
     <>
       <div className="w-full">
         <div className="relative z-10 mb-10 overflow-hidden w-md rounded-[10px] bg-bgLight dark:bg-bgDark px-8 py-10 shadow-pricing  dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-10 xl:p-[50px]">
-          <span className="mb-3 block text-lg font-semibold text-primary">
-            {type}
+          <span className="mb-3 block text-lg font-semibold text-primaryLight dark:text-primaryDark">
+            {title}
           </span>
-          <h2 className="mb-5 text-[42px] font-bold text-dark dark:text-white">
+          <h2 className="mb-5 text-[42px] font-bold text-dark text-black dark:text-white">
             <span className="text-primaryLight dark:text-primaryDark">
               {price}
             </span>
@@ -24,10 +25,10 @@ const PricingCard = ({
               / {subscription}
             </span>
           </h2>
-          <p className="mb-8 border-b h-[60px] border-stroke pb-8 text-sm text-body-color dark:border-dark-3 dark:text-dark-6">
+          <p className="mb-8 border-b h-[60px] border-stroke pb-8 text-sm text-body-color text-black dark:border-dark-3 dark:text-white">
             {description}
           </p>
-          <div className="mb-9 flex flex-col gap-[14px]">{children}</div>
+          <div className=" flex flex-col gap-[14px]">{children}</div>
           {/* <a
             href="/#"
             className={` ${
@@ -311,7 +312,9 @@ const PricingCard = ({
 
 export const List = ({ children }) => {
   return (
-    <p className="text-base text-body-color dark:text-dark-6">{children}</p>
+    <p className="text-base text-body-color text-black dark:text-white">
+      {children}
+    </p>
   );
 };
 

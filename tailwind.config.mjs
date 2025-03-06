@@ -27,7 +27,7 @@ export default {
           foreground: "hsl(var(--bgLight-foreground))",
         },
         bgDark: {
-          DEFAULT: "#0D131E",
+          DEFAULT: "#121212",
           foreground: "hsl(var(--bgDark-foreground))",
         },
         primaryLight: {
@@ -64,9 +64,18 @@ export default {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
-        // Adding Radix UI colors
         ...mauve,
         ...violet,
+        sidebar: {
+          DEFAULT: "hsl(var(--sidebar-background))",
+          foreground: "hsl(var(--sidebar-foreground))",
+          primary: "hsl(var(--sidebar-primary))",
+          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+          accent: "hsl(var(--sidebar-accent))",
+          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+          border: "hsl(var(--sidebar-border))",
+          ring: "hsl(var(--sidebar-ring))",
+        },
       },
       keyframes: {
         spotlight: {
@@ -80,18 +89,35 @@ export default {
           },
         },
         slideDown: {
-          from: { height: "0px" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: {
+            height: "0px",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
         },
         slideUp: {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0px" },
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0px",
+          },
+        },
+        shimmer: {
+          from: {
+            backgroundPosition: "0 0",
+          },
+          to: {
+            backgroundPosition: "-200% 0",
+          },
         },
       },
       animation: {
         spotlight: "spotlight 2s ease .75s 1 forwards",
         slideDown: "slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1)",
         slideUp: "slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1)",
+        shimmer: "shimmer 2s linear infinite",
       },
       borderRadius: {
         lg: "var(--radius)",

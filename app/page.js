@@ -1,11 +1,8 @@
 "use client";
-
+import React, { useState, useEffect } from "react";
 import { api } from "@/convex/_generated/api";
-import {
-  useUser,
-} from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 import { useMutation } from "convex/react";
-import { useEffect } from "react";
 import Header from "./_components/Header";
 import Hero from "./_sections/Hero";
 import { useTheme } from "@/configs/ThemeContext";
@@ -14,7 +11,7 @@ import HowItWorks from "./_sections/HowItWorks";
 import Pricing from "./_sections/Pricing";
 import CTA from "./_sections/CTA";
 import Footer from "./_sections/Footer";
-import LoadingAnimation from "@/components/LoadingAnimation";
+import Loading from "./loading";
 
 export default function Home() {
   const { user } = useUser();
@@ -32,6 +29,33 @@ export default function Home() {
   }, [user, createUser]);
 
   const { theme } = useTheme();
+
+  const [minDelayPassed, setMinDelayPassed] = useState(false);
+  const [contentLoaded, setContentLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMinDelayPassed(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Check if the window has fully loaded.
+  useEffect(() => {
+    // If the page is already loaded, update the state immediately.
+    if (document.readyState === "complete") {
+      setContentLoaded(true);
+    } else {
+      const handleLoad = () => setContentLoaded(true);
+      window.addEventListener("load", handleLoad);
+      return () => window.removeEventListener("load", handleLoad);
+    }
+  }, []);
+
+  // Show the loading animation if either condition isn't met.
+  if (!minDelayPassed || !contentLoaded) {
+    return <Loading />;
+  }
 
   return (
     <div className=" ">
@@ -55,7 +79,7 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section >
+      <section>
         <HowItWorks />
       </section>
 
@@ -74,7 +98,6 @@ export default function Home() {
       <footer>
         <Footer theme={theme} />
       </footer>
-
     </div>
   );
 }

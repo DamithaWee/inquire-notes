@@ -14,8 +14,8 @@ export const ThemeProvider = ({ children }) => {
 
   useLayoutEffect(() => {
     // Load saved theme from localStorage on client
-    const savedTheme = localStorage.getItem("theme") || "light";
-    setTheme(savedTheme);
+    const savedTheme = localStorage.getItem("theme");
+    setTheme(savedTheme || "light");
 
     // Conditionally set html class based on theme
     if (savedTheme === 'dark') {

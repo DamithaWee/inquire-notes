@@ -12,14 +12,6 @@ const PLANS = [
     features: ["5 maximum PDFs", "Unlimited Q&A", "Unlimited Notes"],
   },
   {
-    title: "Weekly",
-    type: "WEEKLY",
-    price: "$3",
-    subscription: "week",
-    description: "Ideal for short-term projects or if you need flexibility.",
-    features: ["15 maximum PDFs", "Unlimited Q&A", "Unlimited Notes"],
-  },
-  {
     title: "Monthly",
     type: "MONTHLY",
     price: "$10",
@@ -30,7 +22,7 @@ const PLANS = [
   {
     title: "Lifetime",
     type: "ONE_TIME",
-    price: "$119",
+    price: "$89",
     description: "Best for those who prefer a one-off investment.",
     features: ["Unlimited PDFs", "Unlimited Q&A", "Unlimited Notes"],
   },
@@ -50,7 +42,7 @@ const Pricing = ({ theme }) => {
       </div>
 
       <div className="flex items-center justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-25 lg:px-20 xl:px-0 mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-25 lg:px-20 xl:px-0 mt-20 ">
           {PLANS.map((plan, index) => (
             <HoverBorderGradient
               containerClassName="rounded-xl"
@@ -60,7 +52,7 @@ const Pricing = ({ theme }) => {
               key={index}
             >
               <PricingCard
-                type={plan.type}
+                title={plan.title}
                 price={plan.price}
                 subscription={plan.subscription}
                 description={plan.description}

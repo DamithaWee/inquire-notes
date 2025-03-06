@@ -20,6 +20,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useUser } from "@clerk/nextjs";
 import axios from "axios";
 import { toast } from "sonner";
+import { FileUpload } from "@/components/ui/file-upload";
 
 const UploadPdfDialog = ({ children, isMaxFile }) => {
   const generateUploadUrl = useMutation(api.fileStorage.generateUploadUrl);
@@ -33,11 +34,21 @@ const UploadPdfDialog = ({ children, isMaxFile }) => {
   const { user } = useUser();
   const [open, setOpen] = useState(false);
 
-  const OnFileSelect = (event) => {
-    setFile(event.target.files[0]);
+  const OnFileSelect = (files) => {
+    setFile(files?.[0]);
+  };
+
+  const ClearFileSelect = () => {
+    setFile(null);
   };
 
   const OnUpload = async () => {
+    // Check if a file is selected; if not, show error and exit.
+    if (!file) {
+      toast.error("Please select a file to upload.");
+      return;
+    }
+
     setLoading(true);
 
     const postUrl = await generateUploadUrl();
@@ -98,17 +109,18 @@ const UploadPdfDialog = ({ children, isMaxFile }) => {
             <DialogDescription asChild>
               <div>
                 <div className="flex gap-2 mt-2 p-3 rounded-md ">
-                  <h2>Select File to Upload</h2>
-                  <input
+                  <FileUpload onChange={OnFileSelect} />
+                  {/* <input
                     type="file"
                     accept="application/pdf"
                     name=""
                     id=""
                     onChange={(event) => OnFileSelect(event)}
-                  />
+                  /> */}
                 </div>
                 <div className="mt-2">
-                  <label>File Name *</label>
+                  <label>File Name</label>
+
                   <Input
                     placeholder="File Name"
                     onChange={(event) => setFileName(event.target.value)}
@@ -123,13 +135,19 @@ const UploadPdfDialog = ({ children, isMaxFile }) => {
               <Button
                 type="button"
                 variant="secondary"
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  setOpen(false);
+                  ClearFileSelect();
+                }}
               >
                 Close
               </Button>
             </DialogClose>
 
-            <Button onClick={OnUpload}>
+            <Button
+              onClick={OnUpload}
+              className="bg-primaryLight dark:bg-primaryDark text-white dark:text-black"
+            >
               {loading ? <Loader2Icon className="animate-spin" /> : "Upload"}
             </Button>
           </DialogFooter>
