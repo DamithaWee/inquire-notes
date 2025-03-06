@@ -57,7 +57,7 @@ const Pricing = ({ theme }) => {
                 subscription={plan.subscription}
                 description={plan.description}
               >
-                <div className="flex flex-col gap-2 -mb-16">
+                <div className="flex flex-col gap-2 -mb-10">
                   {plan.features.map((feature, index) => (
                     <List key={index}>{feature}</List>
                   ))}
