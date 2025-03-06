@@ -102,7 +102,7 @@ You are an intelligent note creation assistant that extracts context from a PDF 
 `;
 
     const aiModelResult = await openRouterModel.chat.completions.create({
-      model: "google/gemini-2.0-pro-exp-02-05:free:online",
+      model: "google/gemini-2.0-pro-exp-02-05:free",
       messages: [{ role: "user", content: PROMPT }],
     });
 
